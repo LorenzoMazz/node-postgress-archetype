@@ -1,12 +1,14 @@
 import cors from "cors";
 import express from "express";
-import userRoutes from "../routes/user-routes.js";
+import configurationRoutes from "../routes/configration-routes.js";
+import { sequelize } from "../utils/postgres/sequelize.js";
 
 class Express {
   constructor(enabledCors) {
     this.express = express();
     this.enableCors(enabledCors);
     this.addRoutes();
+    this.syncModels();
   }
 
   enableCors(enabledCors) {
@@ -22,7 +24,11 @@ class Express {
   }
 
   addRoutes() {
-    this.express.use("/users", userRoutes);
+    this.express.use("/configurations", configurationRoutes);
+  }
+
+  syncModels() {
+    sequelize.sync();
   }
 }
 
