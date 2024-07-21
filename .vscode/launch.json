@@ -1,0 +1,14 @@
+{
+    "version": "0.0.1",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "debugger",
+            "outputCapture": "std",
+            "skipFiles": ["<node_internals>/**"],
+            "program": "src/index.js",
+            "args": []
+        }
+    ]
+}
