@@ -5,6 +5,7 @@ export const createConfiguration = async ({ name, version }) => {
     const configuration = await Configuration.create({ name, version });
     return { success: true, output: configuration }
   } catch (error) {
+    console.error(error.message)
     return { success: false, error: error.message }
   }
 };
@@ -14,6 +15,7 @@ export const getConfigurations = async () => {
     const configurations = await Configuration.findAll();
     return { success: true, output: configurations }
   } catch (error) {
+    console.error(error.message)
     return { success: false, error: error.message }
   }
 };
@@ -23,6 +25,7 @@ export const getConfigurationById = async ({ id }) => {
     const configuration = await Configuration.findByPk(id);
     return { success: true, output: configuration }
   } catch (error) {
+    console.error(error.message)
     return { success: false, error: error.message }
   }
 };
@@ -39,6 +42,7 @@ export const updateConfiguration = async ({ id }, { name, version }) => {
       return { success: false, error: `Configuration not found` }
     }
   } catch (error) {
+    console.error(error.message)
     return { success: false, error: error.message }
   }
 };
@@ -54,6 +58,7 @@ export const deleteConfiguration = async ({ id }) => {
       return { success: false, error: `Configuration not found` }
     }
   } catch (error) {
+    console.error(error.message)
     return { success: false, error: error.message }
   }
 };

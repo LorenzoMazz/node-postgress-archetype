@@ -1,14 +1,15 @@
 import cors from "cors";
 import express from "express";
-import configurationRoutes from "../routes/configration-routes.js";
-import { sequelize } from "../utils/postgres/sequelize.js";
+
+import bodyParser from 'body-parser';
+import { objectRouter as objectRoutes } from "../routes/object-routes.js";
 
 class Express {
   constructor(enabledCors) {
     this.express = express();
+    this.express.use(bodyParser.json());
     this.enableCors(enabledCors);
     this.addRoutes();
-    this.syncModels();
   }
 
   enableCors(enabledCors) {
@@ -24,11 +25,7 @@ class Express {
   }
 
   addRoutes() {
-    this.express.use("/configurations", configurationRoutes);
-  }
-
-  syncModels() {
-    sequelize.sync();
+    this.express.use("/", objectRoutes);
   }
 }
 

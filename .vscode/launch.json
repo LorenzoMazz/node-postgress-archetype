@@ -8,7 +8,14 @@
             "outputCapture": "std",
             "skipFiles": ["<node_internals>/**"],
             "program": "src/index.js",
-            "args": []
+            "args": [],
+            "env": {
+                "POSTGRES_PASSWORD": "mySecretPassword",
+                "POSTGRES_USER": "myUser",
+                "POSTGRES_DB": "myDatabase",
+                "DIALECT": "postgres",
+                "HOST": "127.0.0.1",
+            }
         }
     ]
 }
